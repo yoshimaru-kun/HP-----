@@ -1,263 +1,285 @@
 /* 基本設定 */
-*,
-*::before,
-*::after {
+:root {
+    --primary-color: #3a7bd5; /* 深みのある青 */
+    --secondary-color: #3a60d5;
+    --background-color: #f4f7f6;
+    --text-color: #333;
+    --card-bg-color: #ffffff;
+    --header-bg-color: rgba(255, 255, 255, 0.85);
+}
+
+* {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    background-color: #121212; /* ダークグレー */
-    color: #fff;
+    font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.8;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden; /* 横方向のはみ出しを隠す */
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
 }
 
 /* ヘッダー */
 header {
-    background-color: rgba(18, 18, 18, 0.8); /* 半透明のダークグレー */
+    background-color: var(--header-bg-color);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    right: 0;
     z-index: 1000;
-    transition: background-color 0.3s;
+    transition: box-shadow 0.3s;
+}
+
+header.scrolled {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
 header h1 {
-    margin: 0;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
-    letter-spacing: 1px;
-}
-
-header nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    color: var(--primary-color);
 }
 
 header nav ul li {
     display: inline-block;
-    margin-left: 30px;
+    margin-left: 35px;
 }
 
 header nav ul li a {
     text-decoration: none;
-    color: #fff;
-    font-weight: 600;
+    color: var(--text-color);
+    font-weight: 500;
     font-size: 16px;
+    position: relative;
     transition: color 0.3s;
 }
 
+header nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    transition: width 0.3s;
+}
+
 header nav ul li a:hover {
-    color: #00aaff; /* 明るい青 */
+    color: var(--primary-color);
+}
+
+header nav ul li a:hover::after {
+    width: 100%;
 }
 
 /* ヒーローセクション */
 #hero {
-    background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.9)), url('../images/e982c362-dd98-4ab3-8313-f1052dd7514c.png');
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('../images/e982c362-dd98-4ab3-8313-f1052dd7514c.png');
     background-size: cover;
     background-position: center;
-    color: #fff;
     text-align: center;
-    padding: 250px 20px 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 200px 20px 160px;
+    margin-top: 85px;
 }
 
 #hero h2 {
-    font-size: 56px;
-    font-weight: 900;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    max-width: 800px;
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.3;
+    color: #2c3e50;
 }
 
 #hero p {
-    font-size: 22px;
-    line-height: 1.8;
+    font-size: 18px;
     max-width: 600px;
-    font-weight: 300;
+    margin: 20px auto 0;
+    font-weight: 400;
+    color: #555;
 }
 
 /* セクション */
 section {
-    padding: 100px 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-section:last-of-type {
-    border-bottom: none;
+    padding: 100px 0;
 }
 
 h2 {
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 700;
     text-align: center;
     margin-bottom: 60px;
-    position: relative;
+    color: #2c3e50;
 }
 
 h2::after {
     content: '';
     display: block;
-    width: 60px;
-    height: 4px;
-    background-color: #00aaff;
-    margin: 20px auto 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 15px auto 0;
 }
 
-.price-highlight {
-    font-size: 3.5em; /* 文字サイズを大きく */
-    font-weight: 700; /* 太字に */
-    color: #ffeb3b; /* 目立つ黄色に */
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    text-shadow: 0 0 10px rgba(255, 235, 59, 0.5); /* テキストに影を追加 */
-}
-
-.price-highlight span {
-    font-size: 4em;
-    font-weight: 900;
-    background: linear-gradient(45deg, #00aaff, #0077cc); /* 青系のグラデーション */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    padding: 15px 30px;
-    border-radius: 10px;
-    display: inline-block;
-    margin-top: 10px;
-    text-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
-}
-
-.price-highlight span small {
-    font-size: 0.4em;
-    vertical-align: super;
-    margin-right: 5px;
-    -webkit-text-fill-color: #fff; /* 通常のテキスト色に戻す */
+/* サービス */
+#services .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
 .service-item {
-    margin-bottom: 40px;
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 30px;
-    border-radius: 10px;
+    background-color: var(--card-bg-color);
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .service-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
 }
 
 .service-item h3 {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 600;
     margin-bottom: 15px;
-    color: #00aaff;
-    border-left: none;
-    padding-left: 0;
+    color: var(--primary-color);
 }
 
-.service-item p {
-    font-size: 18px;
-    line-height: 1.8;
-    font-weight: 300;
+/* 料金プラン */
+#price {
+    background-color: #fff;
 }
 
-/* フッター */
-footer {
-    background-color: #1a1a1a;
-    color: #aaa;
+.price-highlight {
     text-align: center;
-    padding: 40px 20px;
+}
+
+.price-highlight p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #555;
+}
+
+.price-highlight span {
+    display: block;
+    font-size: 80px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-top: 10px;
+}
+
+/* 注意事項 */
+#notes ul {
+    list-style: none;
+    display: inline-block;
+    text-align: left;
+    padding: 30px 40px;
+    background-color: #fffbe6;
+    border-radius: 12px;
+    border-left: 6px solid #ffc107;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+#notes h2 {
+    color: #856404;
+    margin-bottom: 15px; /* 見出し下の余白を調整 */
+}
+
+.notes-preface {
+    color: #dc3545; /* 赤色 */
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#notes li {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+#notes li:last-child {
+    margin-bottom: 0;
+}
+
+#notes li::before {
+    content: '※';
+    color: #ffc107;
+    margin-right: 8px;
+    font-weight: 600;
+}
+
+/* お問い合わせ */
+#contact {
+    background-color: #2c3e50;
+    color: #fff;
+}
+
+#contact h2 {
+    color: #fff;
+}
+
+#contact h2::after {
+    background-color: #fff;
 }
 
 .contact-info p {
     font-size: 18px;
-    margin: 10px 0;
 }
 
-/* レスポンシブ対応 */
+/* フッター */
+footer {
+    background-color: #1d2b38;
+    color: #aab8c2;
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 14px;
+}
+
+/* レスポンシブ */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
     header {
-        flex-direction: column;
         padding: 15px 20px;
     }
 
-    header h1 {
-        margin-bottom: 15px;
-        font-size: 22px;
-    }
-
-    header nav ul {
-        text-align: center;
-        padding-left: 0;
-    }
-
-    header nav ul li {
-        margin: 0 10px;
-    }
-    
-    header nav ul li a {
-        font-size: 14px;
-    }
-
     #hero {
-        padding: 120px 20px 80px;
+        padding: 120px 20px;
+        margin-top: 75px;
     }
 
     #hero h2 {
-        font-size: 28px;
-    }
-
-    #hero p {
-        font-size: 16px;
+        font-size: 36px;
     }
 
     section {
-        padding: 60px 20px;
+        padding: 80px 0;
     }
 
     h2 {
-        font-size: 28px;
-        margin-bottom: 40px;
-    }
-    
-    h2::after {
-        margin-top: 15px;
-    }
-
-    .price-highlight {
-        font-size: 1.8em;
-    }
-
-    .price-highlight span {
-        font-size: 2.5em;
-    }
-
-    .service-item h3 {
-        font-size: 20px;
-    }
-
-    .service-item p {
-        font-size: 16px;
-    }
-
-    .contact-info p {
-        font-size: 16px;
+        font-size: 32px;
     }
 }

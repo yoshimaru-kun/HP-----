@@ -1,0 +1,300 @@
+/* 基本設定 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #121212; /* ダークグレー */
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* 横方向のはみ出しを隠す */
+}
+
+/* ヘッダー */
+header {
+    background-color: rgba(18, 18, 18, 0.8); /* 半透明のダークグレー */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: background-color 0.3s;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #00aaff; /* 明るい青 */
+}
+
+/* ヒーローセクション */
+#hero {
+    background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.9)), url('../images/e982c362-dd98-4ab3-8313-f1052dd7514c.png');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 250px 20px 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero h2 {
+    font-size: 56px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    max-width: 800px;
+}
+
+#hero p {
+    font-size: 22px;
+    line-height: 1.8;
+    max-width: 600px;
+    font-weight: 300;
+}
+
+/* セクション */
+section {
+    padding: 100px 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+h2 {
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #00aaff;
+    margin: 20px auto 0;
+}
+
+.price-highlight {
+    font-size: 3.5em; /* 文字サイズを大きく */
+    font-weight: 700; /* 太字に */
+    color: #ffeb3b; /* 目立つ黄色に */
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.5); /* テキストに影を追加 */
+}
+
+.price-highlight span {
+    font-size: 4em;
+    font-weight: 900;
+    background: linear-gradient(45deg, #00aaff, #0077cc); /* 青系のグラデーション */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 15px 30px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 10px;
+    text-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
+}
+
+.price-highlight span small {
+    font-size: 0.4em;
+    vertical-align: super;
+    margin-right: 5px;
+    -webkit-text-fill-color: #fff; /* 通常のテキスト色に戻す */
+}
+
+.service-item {
+    margin-bottom: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.service-item h3 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #00aaff;
+    border-left: none;
+    padding-left: 0;
+}
+
+.service-item p {
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+/* フッター */
+footer {
+    background-color: #1a1a1a;
+    color: #aaa;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.contact-info p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+
+    header h1 {
+        margin-bottom: 15px;
+        font-size: 22px;
+    }
+
+    header nav ul {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    header nav ul li {
+        margin: 0 10px;
+    }
+    
+    header nav ul li a {
+        font-size: 14px;
+    }
+
+    #hero {
+        padding: 120px 20px 80px;
+    }
+
+    #hero h2 {
+        font-size: 28px;
+    }
+
+    #hero p {
+        font-size: 16px;
+    }
+
+    section {
+        padding: 60px 20px;
+    }
+
+    h2 {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+    
+    h2::after {
+        margin-top: 15px;
+    }
+
+    .price-highlight {
+        font-size: 1.8em;
+    }
+
+    .price-highlight span {
+        font-size: 2.5em;
+    }
+
+    .service-item h3 {
+        font-size: 20px;
+    }
+
+    .service-item p {
+        font-size: 16px;
+    }
+
+    .contact-info p {
+        font-size: 16px;
+    }
+}
+
+/* 注意事項セクション */
+#notes {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 60px 40px;
+    border-radius: 10px;
+    margin: 0 40px 100px;
+}
+
+#notes h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+#notes ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+#notes li {
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+}
+
+#notes li::before {
+    content: '※';
+    position: absolute;
+    left: 0;
+    color: #00aaff;
+    font-weight: 600;
+}
